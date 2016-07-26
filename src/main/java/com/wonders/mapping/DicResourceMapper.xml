@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wonders.dao.DicResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.wonders.model.DicResource" >
+    <id column="res_id" property="resId" jdbcType="VARCHAR" />
+    <result column="res_code" property="resCode" jdbcType="VARCHAR" />
+    <result column="res_name" property="resName" jdbcType="VARCHAR" />
+    <result column="res_parent" property="resParent" jdbcType="VARCHAR" />
+    <result column="res_order" property="resOrder" jdbcType="INTEGER" />
+    <result column="res_desc" property="resDesc" jdbcType="VARCHAR" />
+    <result column="op_user_id" property="opUserId" jdbcType="VARCHAR" />
+    <result column="op_user_name" property="opUserName" jdbcType="VARCHAR" />
+    <result column="op_time" property="opTime" jdbcType="DATE" />
+    <result column="is_valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="ver_code" property="verCode" jdbcType="VARCHAR" />
+    <result column="dic_code" property="dicCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    res_id, res_code, res_name, res_parent, res_order, res_desc, op_user_id, op_user_name, 
+    op_time, is_valid, create_id, create_time, ver_code, dic_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_dic_resource
+    where res_id = #{resId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_dic_resource
+    where res_id = #{resId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wonders.model.DicResource" >
+    insert into t_dic_resource (res_id, res_code, res_name, 
+      res_parent, res_order, res_desc, 
+      op_user_id, op_user_name, op_time, 
+      is_valid, create_id, create_time, 
+      ver_code, dic_code)
+    values (#{resId,jdbcType=VARCHAR}, #{resCode,jdbcType=VARCHAR}, #{resName,jdbcType=VARCHAR}, 
+      #{resParent,jdbcType=VARCHAR}, #{resOrder,jdbcType=INTEGER}, #{resDesc,jdbcType=VARCHAR}, 
+      #{opUserId,jdbcType=VARCHAR}, #{opUserName,jdbcType=VARCHAR}, #{opTime,jdbcType=DATE}, 
+      #{isValid,jdbcType=VARCHAR}, #{createId,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, 
+      #{verCode,jdbcType=VARCHAR}, #{dicCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wonders.model.DicResource" >
+    insert into t_dic_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resId != null" >
+        res_id,
+      </if>
+      <if test="resCode != null" >
+        res_code,
+      </if>
+      <if test="resName != null" >
+        res_name,
+      </if>
+      <if test="resParent != null" >
+        res_parent,
+      </if>
+      <if test="resOrder != null" >
+        res_order,
+      </if>
+      <if test="resDesc != null" >
+        res_desc,
+      </if>
+      <if test="opUserId != null" >
+        op_user_id,
+      </if>
+      <if test="opUserName != null" >
+        op_user_name,
+      </if>
+      <if test="opTime != null" >
+        op_time,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="verCode != null" >
+        ver_code,
+      </if>
+      <if test="dicCode != null" >
+        dic_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resId != null" >
+        #{resId,jdbcType=VARCHAR},
+      </if>
+      <if test="resCode != null" >
+        #{resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resName != null" >
+        #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resParent != null" >
+        #{resParent,jdbcType=VARCHAR},
+      </if>
+      <if test="resOrder != null" >
+        #{resOrder,jdbcType=INTEGER},
+      </if>
+      <if test="resDesc != null" >
+        #{resDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserId != null" >
+        #{opUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserName != null" >
+        #{opUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null" >
+        #{opTime,jdbcType=DATE},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="verCode != null" >
+        #{verCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicCode != null" >
+        #{dicCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wonders.model.DicResource" >
+    update t_dic_resource
+    <set >
+      <if test="resCode != null" >
+        res_code = #{resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resName != null" >
+        res_name = #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resParent != null" >
+        res_parent = #{resParent,jdbcType=VARCHAR},
+      </if>
+      <if test="resOrder != null" >
+        res_order = #{resOrder,jdbcType=INTEGER},
+      </if>
+      <if test="resDesc != null" >
+        res_desc = #{resDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserId != null" >
+        op_user_id = #{opUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserName != null" >
+        op_user_name = #{opUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null" >
+        op_time = #{opTime,jdbcType=DATE},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="verCode != null" >
+        ver_code = #{verCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicCode != null" >
+        dic_code = #{dicCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where res_id = #{resId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wonders.model.DicResource" >
+    update t_dic_resource
+    set res_code = #{resCode,jdbcType=VARCHAR},
+      res_name = #{resName,jdbcType=VARCHAR},
+      res_parent = #{resParent,jdbcType=VARCHAR},
+      res_order = #{resOrder,jdbcType=INTEGER},
+      res_desc = #{resDesc,jdbcType=VARCHAR},
+      op_user_id = #{opUserId,jdbcType=VARCHAR},
+      op_user_name = #{opUserName,jdbcType=VARCHAR},
+      op_time = #{opTime,jdbcType=DATE},
+      is_valid = #{isValid,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      ver_code = #{verCode,jdbcType=VARCHAR},
+      dic_code = #{dicCode,jdbcType=VARCHAR}
+    where res_id = #{resId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wonders.dao.DicConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.wonders.model.DicConfig" >
+    <id column="dic_id" property="dicId" jdbcType="VARCHAR" />
+    <result column="dic_code" property="dicCode" jdbcType="VARCHAR" />
+    <result column="dic_name" property="dicName" jdbcType="VARCHAR" />
+    <result column="dic_order" property="dicOrder" jdbcType="INTEGER" />
+    <result column="dic_desc" property="dicDesc" jdbcType="VARCHAR" />
+    <result column="op_user_id" property="opUserId" jdbcType="VARCHAR" />
+    <result column="op_user_name" property="opUserName" jdbcType="VARCHAR" />
+    <result column="op_time" property="opTime" jdbcType="DATE" />
+    <result column="create_id" property="createId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dic_id, dic_code, dic_name, dic_order, dic_desc, op_user_id, op_user_name, op_time, 
+    create_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_dic_config
+    where dic_id = #{dicId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_dic_config
+    where dic_id = #{dicId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wonders.model.DicConfig" >
+    insert into t_dic_config (dic_id, dic_code, dic_name, 
+      dic_order, dic_desc, op_user_id, 
+      op_user_name, op_time, create_id, 
+      create_time)
+    values (#{dicId,jdbcType=VARCHAR}, #{dicCode,jdbcType=VARCHAR}, #{dicName,jdbcType=VARCHAR}, 
+      #{dicOrder,jdbcType=INTEGER}, #{dicDesc,jdbcType=VARCHAR}, #{opUserId,jdbcType=VARCHAR}, 
+      #{opUserName,jdbcType=VARCHAR}, #{opTime,jdbcType=DATE}, #{createId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wonders.model.DicConfig" >
+    insert into t_dic_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dicId != null" >
+        dic_id,
+      </if>
+      <if test="dicCode != null" >
+        dic_code,
+      </if>
+      <if test="dicName != null" >
+        dic_name,
+      </if>
+      <if test="dicOrder != null" >
+        dic_order,
+      </if>
+      <if test="dicDesc != null" >
+        dic_desc,
+      </if>
+      <if test="opUserId != null" >
+        op_user_id,
+      </if>
+      <if test="opUserName != null" >
+        op_user_name,
+      </if>
+      <if test="opTime != null" >
+        op_time,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dicId != null" >
+        #{dicId,jdbcType=VARCHAR},
+      </if>
+      <if test="dicCode != null" >
+        #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicName != null" >
+        #{dicName,jdbcType=VARCHAR},
+      </if>
+      <if test="dicOrder != null" >
+        #{dicOrder,jdbcType=INTEGER},
+      </if>
+      <if test="dicDesc != null" >
+        #{dicDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserId != null" >
+        #{opUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserName != null" >
+        #{opUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null" >
+        #{opTime,jdbcType=DATE},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wonders.model.DicConfig" >
+    update t_dic_config
+    <set >
+      <if test="dicCode != null" >
+        dic_code = #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicName != null" >
+        dic_name = #{dicName,jdbcType=VARCHAR},
+      </if>
+      <if test="dicOrder != null" >
+        dic_order = #{dicOrder,jdbcType=INTEGER},
+      </if>
+      <if test="dicDesc != null" >
+        dic_desc = #{dicDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserId != null" >
+        op_user_id = #{opUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserName != null" >
+        op_user_name = #{opUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="opTime != null" >
+        op_time = #{opTime,jdbcType=DATE},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+    </set>
+    where dic_id = #{dicId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wonders.model.DicConfig" >
+    update t_dic_config
+    set dic_code = #{dicCode,jdbcType=VARCHAR},
+      dic_name = #{dicName,jdbcType=VARCHAR},
+      dic_order = #{dicOrder,jdbcType=INTEGER},
+      dic_desc = #{dicDesc,jdbcType=VARCHAR},
+      op_user_id = #{opUserId,jdbcType=VARCHAR},
+      op_user_name = #{opUserName,jdbcType=VARCHAR},
+      op_time = #{opTime,jdbcType=DATE},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE}
+    where dic_id = #{dicId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_dic_config
+  </select>
+</mapper>
