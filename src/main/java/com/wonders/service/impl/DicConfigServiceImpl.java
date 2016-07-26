@@ -16,7 +16,7 @@ public class DicConfigServiceImpl implements DicConfigService {
 	private DicConfigMapper dicConfigMapper;
 
 	@Override
-	public List<DicConfig> getDicConfigs() {
+	public List<DicConfig> getAll() {
 		// TODO Auto-generated method stub
 		return dicConfigMapper.getAll();
 	}

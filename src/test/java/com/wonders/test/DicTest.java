@@ -26,7 +26,9 @@ public class DicTest {
     
     @Test  
     public void testGetDicAll() {  
-        List<DicConfig> dics = dicConfigService.getDicConfigs(); 
-        LOGGER.info(JSON.toJSON(dics));  
+//        List<DicConfig> dics = dicConfigService.getAll(); 
+//        LOGGER.info(JSON.toJSON(dics));  
+        DicConfig dic = dicConfigService.selectById("1");
+        LOGGER.info(JSON.toJSON(dic));  
     } 
 }

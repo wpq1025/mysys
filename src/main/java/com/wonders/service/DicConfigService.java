@@ -6,7 +6,7 @@ import com.wonders.model.DicConfig;
 
 public interface DicConfigService {
 	
-	List<DicConfig> getDicConfigs();
+	List<DicConfig> getAll();
 	
 	DicConfig selectById(String dicId);
 
