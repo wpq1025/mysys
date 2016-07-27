@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wonders.dao.DicVersionMapper" >
+  <resultMap id="BaseResultMap" type="com.wonders.model.DicVersion" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="dic_code" property="dicCode" jdbcType="VARCHAR" />
+    <result column="ver_code" property="verCode" jdbcType="VARCHAR" />
+    <result column="ver_name" property="verName" jdbcType="VARCHAR" />
+    <result column="ver_desc" property="verDesc" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="tab_num" property="tabNum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dic_code, ver_code, ver_name, ver_desc, create_id, create_time, tab_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_dic_version
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_dic_version
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wonders.model.DicVersion" >
+    insert into t_dic_version (id, dic_code, ver_code, 
+      ver_name, ver_desc, create_id, 
+      create_time, tab_num)
+    values (#{id,jdbcType=VARCHAR}, #{dicCode,jdbcType=VARCHAR}, #{verCode,jdbcType=VARCHAR}, 
+      #{verName,jdbcType=VARCHAR}, #{verDesc,jdbcType=VARCHAR}, #{createId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{tabNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wonders.model.DicVersion" >
+    insert into t_dic_version
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dicCode != null" >
+        dic_code,
+      </if>
+      <if test="verCode != null" >
+        ver_code,
+      </if>
+      <if test="verName != null" >
+        ver_name,
+      </if>
+      <if test="verDesc != null" >
+        ver_desc,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="tabNum != null" >
+        tab_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="dicCode != null" >
+        #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="verCode != null" >
+        #{verCode,jdbcType=VARCHAR},
+      </if>
+      <if test="verName != null" >
+        #{verName,jdbcType=VARCHAR},
+      </if>
+      <if test="verDesc != null" >
+        #{verDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="tabNum != null" >
+        #{tabNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wonders.model.DicVersion" >
+    update t_dic_version
+    <set >
+      <if test="dicCode != null" >
+        dic_code = #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="verCode != null" >
+        ver_code = #{verCode,jdbcType=VARCHAR},
+      </if>
+      <if test="verName != null" >
+        ver_name = #{verName,jdbcType=VARCHAR},
+      </if>
+      <if test="verDesc != null" >
+        ver_desc = #{verDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="tabNum != null" >
+        tab_num = #{tabNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wonders.model.DicVersion" >
+    update t_dic_version
+    set dic_code = #{dicCode,jdbcType=VARCHAR},
+      ver_code = #{verCode,jdbcType=VARCHAR},
+      ver_name = #{verName,jdbcType=VARCHAR},
+      ver_desc = #{verDesc,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      tab_num = #{tabNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
